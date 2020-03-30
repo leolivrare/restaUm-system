@@ -1,10 +1,15 @@
 package application;
 
+import oneLeftLayer.OneLeftMatch;
+
 public class Application {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Hello World!");
+		OneLeftMatch match = new OneLeftMatch();
+		
+		
+		UI.printBoard(match.getPieces(), match.getBoard());
 	}
 
 }

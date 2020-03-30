@@ -14,6 +14,10 @@ public class Piece {
 		return board;
 	}
 	
+	public Position getPosition() {
+		return position;
+	}
+	
 	public boolean[][] possibleMoves() {
 		boolean[][] possibleMoves = new boolean[board.getRows()][board.getColumns()];
 		Position posAux = new Position(0, 0);
