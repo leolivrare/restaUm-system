@@ -54,6 +54,12 @@ public class Board {
 	}
 	
 	public boolean positionExists(int row, int column) {
+		if (row < 0 || column < 0) {
+			return false;
+		}
+		if (row > 6 || column > 6) {
+			return false;
+		}
 		if (row < 2 && column < 2) {
 			return false;
 		}

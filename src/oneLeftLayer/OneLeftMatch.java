@@ -4,6 +4,7 @@ import boardLayer.Board;
 import boardLayer.Piece;
 import boardLayer.Position;
 
+
 public class OneLeftMatch {
 	private Board board;
 
@@ -35,5 +36,63 @@ public class OneLeftMatch {
 			}
 		}
 		return mat;
+	}
+	
+	public boolean validateSourcePosition(Position position) {
+		if (!board.thereIsAPiece(position)) {
+			System.out.println("Nao há nenhuma peça na posicao inicial!");
+			return false;
+		}
+		if (!(board.piece(position).isThereAnyPossibleMove())) {
+			System.out.println("Não há nenhum movimento possível para essa peça!");
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean validateTargetPosition(Position source, Position target) {
+		if (!board.piece(source).possibleMove(target)) {
+			System.out.println("A peça escolhida não pode se mover na posição de destino!");
+			return false;
+		}
+		return true;
+	}
+	
+	public void performMove(OneLeftPosition sourcePosition, OneLeftPosition targetPosition) {
+		Position source = sourcePosition.toPosition();
+		Position target = targetPosition.toPosition();
+		System.out.println(source);
+		System.out.println(target);
+		if (validateSourcePosition(source) && validateTargetPosition(source, target)) {
+			makeMove(source, target);
+		}
+	}
+	
+	private void makeMove(Position source, Position target) {
+		int columnTargetPiece, rowTargetPiece;
+		//Movimento Horizontal
+		if (source.getRow()-target.getRow() == 0) {
+			if (source.getColumn() < target.getColumn()) {
+				columnTargetPiece = source.getColumn()+1;
+			}
+			else {
+				columnTargetPiece = source.getColumn()-1;
+			}
+			board.placePiece(board.piece(source), target);
+			board.removePiece(new Position(source.getRow(), columnTargetPiece));
+			board.removePiece(source);
+		}
+		//Movimento Vertical
+		else {
+			if (source.getRow() < target.getRow()) {
+				rowTargetPiece = source.getRow()+1;
+			}
+			else {
+				rowTargetPiece = source.getRow()-1;
+			}
+			board.placePiece(board.piece(source), target);
+			board.removePiece(new Position(rowTargetPiece, source.getColumn()));
+			board.removePiece(source);
+		}
 	}
 }
