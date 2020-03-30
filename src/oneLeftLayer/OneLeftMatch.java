@@ -39,6 +39,10 @@ public class OneLeftMatch {
 	}
 	
 	public boolean validateSourcePosition(Position position) {
+		if (!board.positionExists(position)) {
+			System.out.println("Essa posição não existe!");
+			return false;
+		}
 		if (!board.thereIsAPiece(position)) {
 			System.out.println("Nao há nenhuma peça na posicao inicial!");
 			return false;
