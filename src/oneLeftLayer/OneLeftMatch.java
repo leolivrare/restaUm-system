@@ -7,9 +7,11 @@ import boardLayer.Position;
 
 public class OneLeftMatch {
 	private Board board;
+	private int numPieces;
 
 	public OneLeftMatch() {
 		this.board = new Board(7, 7);
+		numPieces = 32;
 		initialSetup();
 	}
 	
@@ -72,6 +74,18 @@ public class OneLeftMatch {
 		}
 	}
 	
+	public boolean gameSituation() {
+		if (numPieces == 1) {
+			System.out.println("Voce venceu!");
+			return true;
+		}
+		return false;
+	}
+	
+	public void attNumPieces() {
+		numPieces--;
+	}
+	
 	private void makeMove(Position source, Position target) {
 		int columnTargetPiece, rowTargetPiece;
 		//Movimento Horizontal
@@ -98,5 +112,6 @@ public class OneLeftMatch {
 			board.removePiece(new Position(rowTargetPiece, source.getColumn()));
 			board.removePiece(source);
 		}
+		attNumPieces();
 	}
 }

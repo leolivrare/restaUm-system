@@ -62,7 +62,7 @@ public class UI {
 	
 	private static void printPiece(Piece piece, boolean background, int row, int column, Board board) {
 		if (!board.positionExists(new Position(row ,column))) {
-			System.out.print("x");
+			System.out.print(" ");
 		}
 		else if (piece == null) {
 				System.out.print("-");
