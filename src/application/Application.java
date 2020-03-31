@@ -13,25 +13,22 @@ public class Application {
 		
 		csv.setDataSource("../../../Documents/RestaUm/restaUm-system/src/db/teste.csv");
 		String commands[] = csv.requestCommands();
-		String comando[] = commands[0].split(":");
 		
 		System.out.println("Tabuleiro inicial:");
-		
-		
-		
 		UI.printBoard(match.getPieces(), match.getBoard());
 		System.out.println();
 		
-		match.performMove(new OneLeftPosition(comando[0].charAt(0), Character.getNumericValue(comando[0].charAt(1))), new OneLeftPosition(comando[1].charAt(0), Character.getNumericValue(comando[1].charAt(1))));
-		UI.printBoard(match.getPieces(), match.getBoard());
-		System.out.println();
-		comando = commands[1].split(":");
-		match.performMove(new OneLeftPosition(comando[0].charAt(0), Character.getNumericValue(comando[0].charAt(1))), new OneLeftPosition(comando[1].charAt(0), Character.getNumericValue(comando[1].charAt(1))));
-		UI.printBoard(match.getPieces(), match.getBoard());
-		System.out.println();
-		
-		match.performMove(new OneLeftPosition('e', 4), new OneLeftPosition('f', 4));
-		UI.printBoard(match.getPieces(), match.getBoard());
-		System.out.println();
+		for (int i = 0; i < commands.length; i++) {
+			String command[] = commands[i].split(":");
+			Character sourceColumn = command[0].charAt(0);
+			int sourceRow = Character.getNumericValue(command[0].charAt(1));
+			Character targetColumn = command[1].charAt(0);
+			int targetRow = Character.getNumericValue(command[1].charAt(1));
+			System.out.println("Source: " + command[0]);
+			System.out.println("Target: " + command[1]);
+			match.performMove(new OneLeftPosition(sourceColumn, sourceRow), new OneLeftPosition(targetColumn, targetRow));
+			UI.printBoard(match.getPieces(), match.getBoard());
+			System.out.println();
+		}
 	}
 }
