@@ -11,10 +11,9 @@ public class Application {
 		
 		CSVReader csv = new CSVReader();
 		
-		csv.setDataSource("../../../Documents/RestaUm/restaUm-system/src/teste.csv");
+		csv.setDataSource("../../../Documents/RestaUm/restaUm-system/src/db/teste.csv");
 		String commands[] = csv.requestCommands();
 		String comando[] = commands[0].split(":");
-		System.out.println(comando[0]);
 		
 		
 		
