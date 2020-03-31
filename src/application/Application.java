@@ -7,21 +7,30 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		OneLeftMatch match = new OneLeftMatch();
-		
-		CSVReader csv = new CSVReader();
-		
-		csv.setDataSource("teste.csv");
-		String commands[] = csv.requestCommands();
-		System.out.println(commands);
-		
+		OneLeftMatch match = new OneLeftMatch();		
 		
 		UI.printBoard(match.getPieces(), match.getBoard());
 		
 		match.performMove(new OneLeftPosition('f', 4), new OneLeftPosition('d', 4));
 		UI.printBoard(match.getPieces(), match.getBoard());
+		
 		match.performMove(new OneLeftPosition('c', 4), new OneLeftPosition('e', 4));
 		UI.printBoard(match.getPieces(), match.getBoard());
+
+		match.performMove(new OneLeftPosition('c', 2), new OneLeftPosition('c', 4));
+		UI.printBoard(match.getPieces(), match.getBoard());		
+
+		match.performMove(new OneLeftPosition('d', 6), new OneLeftPosition('d', 4));
+		UI.printBoard(match.getPieces(), match.getBoard());	
+
+		match.performMove(new OneLeftPosition('f', 5), new OneLeftPosition('d', 5));
+		UI.printBoard(match.getPieces(), match.getBoard());		
+
+		match.performMove(new OneLeftPosition('c', 5), new OneLeftPosition('e', 5));
+		UI.printBoard(match.getPieces(), match.getBoard());		
+
+		match.performMove(new OneLeftPosition('d', 4), new OneLeftPosition('f', 4));
+		UI.printBoard(match.getPieces(), match.getBoard());		
 	}
 
 }
