@@ -7,12 +7,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		OneLeftMatch match = new OneLeftMatch();		
-		
-		UI.printBoard(match.getPieces(), match.getBoard());
-		
-		match.performMove(new OneLeftPosition('f', 4), new OneLeftPosition('d', 4));
-		UI.printBoard(match.getPieces(), match.getBoard());
+		OneLeftMatch match = new OneLeftMatch();	
 		
 		match.performMove(new OneLeftPosition('c', 4), new OneLeftPosition('e', 4));
 		UI.printBoard(match.getPieces(), match.getBoard());
@@ -32,5 +27,4 @@ public class Application {
 		match.performMove(new OneLeftPosition('d', 4), new OneLeftPosition('f', 4));
 		UI.printBoard(match.getPieces(), match.getBoard());		
 	}
-
 }
