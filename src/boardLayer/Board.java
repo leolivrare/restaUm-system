@@ -34,6 +34,9 @@ public class Board {
 	}
 	
 	public void placePiece(Piece piece, Position position) {
+		if (!positionExists(position)) {
+			return;
+		}
 		if (thereIsAPiece(position)) {
 			return;
 		}
@@ -41,17 +44,20 @@ public class Board {
 		piece.position = position;
 	}
 	
-	public void removePiece(Position position) {
+	public Piece removePiece(Position position) {
 		if (!positionExists(position)) {
-			return;
+			return null;
 		}
 		if (piece(position) == null) {
-			return;
+			return null;
 		}
 		Piece aux = piece(position);
 		aux.position = null;
 		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
 	}
+	
+	
 	
 	public boolean positionExists(int row, int column) {
 		if (row < 0 || column < 0) {

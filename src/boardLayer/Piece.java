@@ -23,6 +23,8 @@ public class Piece {
 		Position posAux = new Position(0, 0);
 		Position posAux2 = new Position(0, 0);
 		
+		//System.out.println(position);
+		
 		posAux.setValues(position.getRow()+2, position.getColumn());
 		posAux2.setValues(position.getRow()+1, position.getColumn());
 		if (board.positionExists(posAux) && !board.thereIsAPiece(posAux) && board.thereIsAPiece(posAux2)) {

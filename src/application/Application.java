@@ -26,5 +26,6 @@ public class Application {
 
 		match.performMove(new OneLeftPosition('d', 4), new OneLeftPosition('f', 4));
 		UI.printBoard(match.getPieces(), match.getBoard());		
+		
 	}
 }

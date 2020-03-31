@@ -96,9 +96,9 @@ public class OneLeftMatch {
 			else {
 				columnTargetPiece = source.getColumn()-1;
 			}
-			board.placePiece(board.piece(source), target);
-			board.removePiece(new Position(source.getRow(), columnTargetPiece));
-			board.removePiece(source);
+			Piece p = board.removePiece(source);
+			Piece capturedPiece = board.removePiece(new Position(source.getRow(), columnTargetPiece));
+			board.placePiece(p, target);
 		}
 		//Movimento Vertical
 		else {
@@ -108,9 +108,10 @@ public class OneLeftMatch {
 			else {
 				rowTargetPiece = source.getRow()-1;
 			}
-			board.placePiece(board.piece(source), target);
-			board.removePiece(new Position(rowTargetPiece, source.getColumn()));
-			board.removePiece(source);
+			Piece p = board.removePiece(source);
+			Piece capturedPiece = board.removePiece(new Position(rowTargetPiece, source.getColumn()));
+			board.placePiece(p, target);
+			
 		}
 		attNumPieces();
 	}
