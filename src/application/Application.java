@@ -24,7 +24,10 @@ public class Application {
 		match.performMove(new OneLeftPosition('c', 5), new OneLeftPosition('e', 5));
 		UI.printBoard(match.getPieces(), match.getBoard());		
 
-		match.performMove(new OneLeftPosition('d', 4), new OneLeftPosition('f', 4));
+		match.performMove(new OneLeftPosition('d', 3), new OneLeftPosition('d', 5));
+		UI.printBoard(match.getPieces(), match.getBoard());
+
+		match.performMove(new OneLeftPosition('d', 5), new OneLeftPosition('f', 5));
 		UI.printBoard(match.getPieces(), match.getBoard());		
 		
 	}
