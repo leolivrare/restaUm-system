@@ -25,5 +25,4 @@ public class Application {
 		match.performMove(new OneLeftPosition(comando[0].charAt(0), Character.getNumericValue(comando[0].charAt(1))), new OneLeftPosition(comando[1].charAt(0), Character.getNumericValue(comando[1].charAt(1))));
 		UI.printBoard(match.getPieces(), match.getBoard());
 	}
-
 }
