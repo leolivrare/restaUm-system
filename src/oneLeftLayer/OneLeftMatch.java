@@ -66,8 +66,7 @@ public class OneLeftMatch {
 	public void performMove(OneLeftPosition sourcePosition, OneLeftPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
-		System.out.println("Source: " + sourcePosition);
-		System.out.println("Target: " + targetPosition);
+		
 		if (validateSourcePosition(source) && validateTargetPosition(source, target)) {
 			makeMove(source, target);
 		}

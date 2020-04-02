@@ -28,6 +28,9 @@ public class Application {
 
 			int sourceRow = Character.getNumericValue(command[0].charAt(1));
 			int targetRow = Character.getNumericValue(command[1].charAt(1));
+
+			System.out.println("Source: " + sourceColumn + sourceRow);
+			System.out.println("Target: " + targetColumn + targetRow);
 			
 			match.performMove(new OneLeftPosition(sourceColumn, sourceRow), new OneLeftPosition(targetColumn, targetRow));
 			
