@@ -1,5 +1,7 @@
 package application;
 
+import java.util.stream.Stream;
+
 import oneLeftLayer.OneLeftMatch;
 import oneLeftLayer.OneLeftPosition;
 
@@ -17,9 +19,9 @@ public class Application {
 		System.out.println("Tabuleiro inicial:");
 		UI.printBoard(match.getPieces(), match.getBoard());
 		System.out.println();
-		
-		for (int i = 0; i < commands.length; i++) {
-			String command[] = commands[i].split(":");
+
+		Stream.of(commands).forEach(it -> {
+			String command[] = it.split(":");
 
 			Character sourceColumn = command[0].charAt(0);
 			Character targetColumn = command[1].charAt(0);
@@ -31,6 +33,6 @@ public class Application {
 			
 			UI.printBoard(match.getPieces(), match.getBoard());
 			System.out.println();
-		}
+		});
 	}
 }
