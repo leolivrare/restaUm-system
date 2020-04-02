@@ -31,6 +31,12 @@ public class Application {
 		UI.printBoard(match.getPieces(), match.getBoard());
 
 		match.performMove(new OneLeftPosition('d', 5), new OneLeftPosition('f', 5));
+		UI.printBoard(match.getPieces(), match.getBoard());	
+
+		match.performMove(new OneLeftPosition('e', 3), new OneLeftPosition('e', 5));
+		UI.printBoard(match.getPieces(), match.getBoard());	
+
+		match.performMove(new OneLeftPosition('b', 4), new OneLeftPosition('d', 4));
 		UI.printBoard(match.getPieces(), match.getBoard());		
 	}
 }
