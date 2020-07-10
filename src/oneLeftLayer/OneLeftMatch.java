@@ -4,7 +4,6 @@ import boardLayer.Board;
 import boardLayer.Piece;
 import boardLayer.Position;
 
-
 public class OneLeftMatch {
 	private Board board;
 	private int numPieces;
@@ -14,7 +13,7 @@ public class OneLeftMatch {
 		numPieces = 32;
 		initialSetup();
 	}
-	
+
 	private void initialSetup() {
 		for (int i = 0; i < board.getRows(); i++) {
 			for (int j = 0; j < board.getColumns(); j++) {
@@ -25,21 +24,21 @@ public class OneLeftMatch {
 		}
 		board.removePiece(new Position(3, 3));
 	}
-	
+
 	public Board getBoard() {
 		return board;
 	}
-	
+
 	public Piece[][] getPieces() {
 		Piece[][] mat = new Piece[board.getRows()][board.getColumns()];
-		for (int i=0; i<board.getRows(); i++) {
-			for(int j=0; j<board.getColumns(); j++) {
+		for (int i = 0; i < board.getRows(); i++) {
+			for (int j = 0; j < board.getColumns(); j++) {
 				mat[i][j] = board.piece(i, j);
 			}
 		}
 		return mat;
 	}
-	
+
 	public boolean validateSourcePosition(Position position) {
 		if (!board.positionExists(position)) {
 			System.out.println("Essa posição não existe!");
@@ -55,7 +54,7 @@ public class OneLeftMatch {
 		}
 		return true;
 	}
-	
+
 	private boolean validateTargetPosition(Position source, Position target) {
 		if (!board.piece(source).possibleMove(target)) {
 			System.out.println("A peça escolhida não pode se mover na posição de destino!");
@@ -63,15 +62,16 @@ public class OneLeftMatch {
 		}
 		return true;
 	}
-	
+
 	public void performMove(OneLeftPosition sourcePosition, OneLeftPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
+		
 		if (validateSourcePosition(source) && validateTargetPosition(source, target)) {
 			makeMove(source, target);
 		}
 	}
-	
+
 	public boolean gameSituation() {
 		if (numPieces == 1) {
 			System.out.println("Voce venceu!");
@@ -79,32 +79,30 @@ public class OneLeftMatch {
 		}
 		return false;
 	}
-	
+
 	public void attNumPieces() {
 		numPieces--;
 	}
-	
+
 	private void makeMove(Position source, Position target) {
 		int columnTargetPiece, rowTargetPiece;
-		//Movimento Horizontal
-		if (source.getRow()-target.getRow() == 0) {
+		// Movimento Horizontal
+		if (source.getRow() - target.getRow() == 0) {
 			if (source.getColumn() < target.getColumn()) {
-				columnTargetPiece = source.getColumn()+1;
-			}
-			else {
-				columnTargetPiece = source.getColumn()-1;
+				columnTargetPiece = source.getColumn() + 1;
+			} else {
+				columnTargetPiece = source.getColumn() - 1;
 			}
 			Piece p = board.removePiece(source);
 			Piece capturedPiece = board.removePiece(new Position(source.getRow(), columnTargetPiece));
 			board.placePiece(p, target);
 		}
-		//Movimento Vertical
+		// Movimento Vertical
 		else {
 			if (source.getRow() < target.getRow()) {
-				rowTargetPiece = source.getRow()+1;
-			}
-			else {
-				rowTargetPiece = source.getRow()-1;
+				rowTargetPiece = source.getRow() + 1;
+			} else {
+				rowTargetPiece = source.getRow() - 1;
 			}
 			Piece p = board.removePiece(source);
 			Piece capturedPiece = board.removePiece(new Position(rowTargetPiece, source.getColumn()));
